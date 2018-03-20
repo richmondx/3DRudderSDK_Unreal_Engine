@@ -5,5 +5,5 @@
  
 #include "Core.h"
 #include "CoreUObject.h"
- 
+#include "Engine.h"
 #include "I3DRudderPlugin.h"

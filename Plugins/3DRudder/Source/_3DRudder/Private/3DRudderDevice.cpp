@@ -60,7 +60,7 @@ F3DRudderDevice::F3DRudderDevice(const TSharedRef< FGenericApplicationMessageHan
 	EKeys::AddKey(FKeyDetails(EKeys3dRudder::YAxis, LOCTEXT("YAxis", "3dRudder YAxis"), FKeyDetails::FloatAxis, FName(TEXT("3dRudder"))));
 	EKeys::AddKey(FKeyDetails(EKeys3dRudder::ZAxis, LOCTEXT("ZAxis", "3dRudder ZAxis"), FKeyDetails::FloatAxis, FName(TEXT("3dRudder"))));
 	EKeys::AddKey(FKeyDetails(EKeys3dRudder::ZRotation, LOCTEXT("ZRotation", "3dRudder ZRotation"), FKeyDetails::FloatAxis, FName(TEXT("3dRudder"))));
-	EKeys::AddKey(FKeyDetails(EKeys3dRudder::Status, LOCTEXT("Status", "3dRudder Status"), FKeyDetails::FloatAxis, FName(TEXT("3dRudder"))));
+	
 	EKeys::AddKey(FKeyDetails(EKeys3dRudder::Sensor1, LOCTEXT("Sensor1", "3dRudder Sensor1"), FKeyDetails::FloatAxis, FName(TEXT("3dRudder"))));
 	EKeys::AddKey(FKeyDetails(EKeys3dRudder::Sensor2, LOCTEXT("Sensor2", "3dRudder Sensor2"), FKeyDetails::FloatAxis, FName(TEXT("3dRudder"))));
 	EKeys::AddKey(FKeyDetails(EKeys3dRudder::Sensor3, LOCTEXT("Sensor3", "3dRudder Sensor3"), FKeyDetails::FloatAxis, FName(TEXT("3dRudder"))));
@@ -92,20 +92,20 @@ void F3DRudderDevice::SendControllerEvents()
 			// Axis : X, Y, Z, rZ
 			ns3dRudder::Axis axis;
 			// Status of 3dRudder
-			ns3dRudder::Status status;
+			//ns3dRudder::Status status;
 			if (pSdk->GetAxis(i, mode, &axis, curves) == ns3dRudder::Success)
 			{
-				status = pSdk->GetStatus(i);
+				//status = pSdk->GetStatus(i);
 				// Roll
-				EmitAnalogInputEventForKey(EKeys3dRudder::XAxis, axis.m_aX, i, 0);
+				EmitAnalogInputEventForKey(EKeys3dRudder::XAxis, axis.m_aY, i, 0);
 				// Pitch				   
-				EmitAnalogInputEventForKey(EKeys3dRudder::YAxis, axis.m_aY, i, 0);
+				EmitAnalogInputEventForKey(EKeys3dRudder::YAxis, axis.m_aX, i, 0);
 				// UpDown				   
 				EmitAnalogInputEventForKey(EKeys3dRudder::ZAxis, axis.m_aZ, i, 0);
 				// Yaw					   
 				EmitAnalogInputEventForKey(EKeys3dRudder::ZRotation, axis.m_rZ, i, 0);
 				// Status				   
-				EmitAnalogInputEventForKey(EKeys3dRudder::Status, status, i, 0);
+				//EmitAnalogInputEventForKey(EKeys3dRudder::Status, status, i, 0);
 				// 6 Sensors			   
 				EmitAnalogInputEventForKey(EKeys3dRudder::Sensor1, pSdk->GetSensor(i, 0), i, 0);
 				EmitAnalogInputEventForKey(EKeys3dRudder::Sensor2, pSdk->GetSensor(i, 1), i, 0);

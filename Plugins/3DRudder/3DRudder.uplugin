@@ -1,7 +1,7 @@
 {
     "FileVersion" : 3,
     "Version" : 2,
-    "VersionName" : "2.1",
+    "VersionName" : "2.2",
     "FriendlyName" : "3dRudder Plugin",
     "Description" : "3dRudder plugin base on the 3dRudderSDK for Unreal Engine",
     "Category" : "Input Devices",

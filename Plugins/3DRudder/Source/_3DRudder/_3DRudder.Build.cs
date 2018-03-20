@@ -32,8 +32,9 @@ namespace UnrealBuildTool.Rules
  
             // ... add other public dependencies that you statically link with here ...
             PublicDependencyModuleNames.AddRange( new string[] {
-                "Core", 
-                "Engine",           // Used by Actor
+                "Core",
+				"CoreUObject",
+				"Engine",           // Used by Actor
                 "Slate",            // Used by InputDevice to fire bespoke FKey events
                 "SlateCore",
                 "Projects",
