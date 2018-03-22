@@ -80,20 +80,23 @@ void F3DRudderEditorModule::UpdateViewportCamera(const FVector& translation, flo
 
 	if (GEditor != nullptr && GEditor->GetActiveViewport() != nullptr && GEditor->GetActiveViewport()->GetClient() != nullptr)
 	{
-		FEditorViewportClient* client = StaticCast<FEditorViewportClient*>(GEditor->GetActiveViewport()->GetClient());		
-		if (client != nullptr && !client->Viewport->IsPlayInEditorViewport())
+		FViewportClient*  client = GEditor->GetActiveViewport()->GetClient();
+		FEditorViewportClient* Eclient = (FEditorViewportClient*)client;
+		EWorldType::Type nType = client->GetWorld()->WorldType;
+
+		if (client != nullptr && nType != EWorldType::PIE && !Eclient->Viewport->IsPlayInEditorViewport())
 		{			
 			const FVector speed = GetDefault<U3DRudderSettings>()->Translation;
 			const float speedRotation = GetDefault<U3DRudderSettings>()->RotationYaw;
 			// X Y local
 			FVector local(translation.X * speed.X, translation.Y * speed.Y, 0);
-			FVector world = client->GetViewRotation().RotateVector(local);
+			FVector world = Eclient->GetViewRotation().RotateVector(local);
 			// Z world
 			world += FVector(0.0f, 0.0f, translation.Z * speed.Z);
 			// Pitch Yaw Roll
 			FRotator rotation(0, yaw * speedRotation, 0);
 			// Move Camera of Viewport with 3dRudder
-			client->MoveViewportCamera(world, rotation);
+			Eclient->MoveViewportCamera(world, rotation);
 		}
 	}
 }
