@@ -80,38 +80,38 @@ E3DRudderStatus U3DRudderComponent::GetStatus()
 
 FString U3DRudderComponent::GetStatusString()
 {
-	FString status = "NoStatus";
+	FString statusString = "NoStatus";
 	switch (pSdk->GetStatus(Port))
 	{
 	case ns3dRudder::Status::NoFootStayStill:
-		status = "No Foot Stay Still";
+		statusString = "No Foot Stay Still";
 		break;
 	case ns3dRudder::Status::Initialisation:
-		status = "Initialisation";
+		statusString = "Initialisation";
 		break;
 	case ns3dRudder::Status::PutYourFeet:
-		status = "Put Your Feet";
+		statusString = "Put Your Feet";
 		break;
 	case ns3dRudder::Status::PutSecondFoot:
-		status = "Put Second Foot";
+		statusString = "Put Second Foot";
 		break;
 	case ns3dRudder::Status::StayStill:
-		status = "Stay Still";
+		statusString = "Stay Still";
 		break;
 	case ns3dRudder::Status::InUse:
-		status = "In Use";
+		statusString = "In Use";
 		break;
 	case ns3dRudder::Status::ExtendedMode:
-		status = "Extended Mode";
+		statusString = "Extended Mode";
 		break;
 	case ns3dRudder::Status::End:
-		status = "End";
+		statusString = "End";
 		break;
 	default:
-		status = "NoStatus";
+		statusString = "NoStatus";
 		break;
 	}
-	return status;
+	return statusString;
 }
 
 E3DRudderError U3DRudderComponent::GetAxis(E3DRudderModeAxis mode, float &axis_x, float &axis_y, float &axis_z, float &axis_rz)

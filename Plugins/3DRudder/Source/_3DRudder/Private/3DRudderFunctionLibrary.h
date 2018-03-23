@@ -5,6 +5,7 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #define _3DRUDDER_SDK_STATIC
 #include "3DRudderSDK.h"
+#include "Curves/CurveFloat.h"
 #include "3DRudderFunctionLibrary.generated.h"
 
 /** Defines the mode of axis*/

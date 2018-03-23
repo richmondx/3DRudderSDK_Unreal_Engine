@@ -84,7 +84,7 @@ namespace UnrealBuildTool.Rules
             }
  
             // Defination lets us know whether we successfully found our library!
-            Definitions.Add(string.Format("WITH_MY_LIBRARY_PATH_USE={0}", isLibrarySupported ? 1 : 0));
+            PublicDefinitions.Add(string.Format("WITH_MY_LIBRARY_PATH_USE={0}", isLibrarySupported ? 1 : 0));
  
             return isLibrarySupported;
         }

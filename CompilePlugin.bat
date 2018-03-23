@@ -1,0 +1,1 @@
+"C:\Program Files\Epic Games\UE_4.19\Engine\Build\BatchFiles\RunUAT.bat" BuildPlugin -Plugin="C:\Projets\3DRudderSDK_Unreal_Engine\Plugins\3DRudder\3DRudder.uplugin" -Package="%CD%\Package\UE4_419" -Rocket
