@@ -25,7 +25,11 @@ TSharedPtr< class IInputDevice > F3DRudderPlugin::CreateInputDevice(const TShare
 // This function may be called during shutdown to clean up the module.
 void F3DRudderPlugin::ShutdownModule()
 {
-	m_3DRudderDevice->~F3DRudderDevice();
+	if (m_3DRudderDevice.IsValid())
+	{
+		m_3DRudderDevice->~F3DRudderDevice();
+		m_3DRudderDevice.Reset();
+	}
 
 	UE_LOG(_3dRudderPlugin, Log, TEXT("Shutdown Module"));
 }
